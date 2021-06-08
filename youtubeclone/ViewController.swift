@@ -30,7 +30,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        
+        let heigth = (collectionView.frame.width - 16 - 16) * 9 / 16
+        
+        return CGSize(width: view.frame.width, height: heigth + 16 + 68)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -52,7 +55,7 @@ class VideoCell: UICollectionViewCell {
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+//        imageView.backgroundColor = .blue
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -92,7 +95,7 @@ class VideoCell: UICollectionViewCell {
     
     let separatorView: UIView = {
        let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         return view
     }()
     
