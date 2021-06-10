@@ -1,48 +1,4 @@
-//
-//  ViewController.swift
-//  youtubeclone
-//
-//  Created by retina on 08/06/21.
-//
-
 import UIKit
-
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = "Home"
-        
-        navigationController?.navigationBar.isTranslucent = false
-        
-        collectionView.backgroundColor = .white
-        
-        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellId")
-        // Do any additional setup after loading the view.
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 5
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cel = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        return cel
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let heigth = (collectionView.frame.width - 16 - 16) * 9 / 16
-        
-        return CGSize(width: view.frame.width, height: heigth + 16 + 68)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-}
 
 class VideoCell: UICollectionViewCell {
     
@@ -193,19 +149,3 @@ class VideoCell: UICollectionViewCell {
 //        addSubview(view: UIView)
     }
 }
-
-extension UIView {
-    func addConstraintsWithFormat(format: String, views: UIView...) {
-        var viewsDictionary = [String : UIView]()
-        for(index, view) in views.enumerated() {
-            let key = "v\(index)"
-            view.translatesAutoresizingMaskIntoConstraints = false
-            viewsDictionary[key] = view
-        }
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format,
-                                                      options: NSLayoutConstraint.FormatOptions(),
-                                                      metrics: nil,
-                                                      views: viewsDictionary))
-    }
-}
-
