@@ -1,15 +1,19 @@
 import UIKit
 
-class VideoCell: UICollectionViewCell {
-    
+class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
+    func setupViews() {}
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+class VideoCell: BaseCell {
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -57,7 +61,7 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
-    func setupViews(){
+    override func setupViews(){
         
         addSubview(thumbnailImageView)
         addSubview(separatorView)
@@ -141,11 +145,5 @@ class VideoCell: UICollectionViewCell {
                                          multiplier: 0,
                                          constant: 30))
         
-        
-//        addConstraintsWithFormat(format: "V:[v0(20)]", views: titleLabel)
-//        addConstraintsWithFormat(format: "H:[v0]-16-|", views: titleLabel)
-
-//        backgroundColor = .yellow
-//        addSubview(view: UIView)
     }
 }
